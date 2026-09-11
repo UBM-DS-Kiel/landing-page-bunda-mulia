@@ -13,17 +13,26 @@
         }
 
         :root {
-            --primary: #667eea;
-            --secondary: #764ba2;
-            --accent: #f093fb;
-            --dark: #1a1a2e;
-            --light: #f8f9fa;
+            --primary: #1a56db;
+            --primary-dark: #0e3a8c;
+            --primary-light: #2563eb;
+            --accent: #38bdf8;
+            --accent-light: #7dd3fc;
+            --dark: #0f172a;
+            --dark-light: #1e293b;
+            --light: #f1f5f9;
+            --gray: #64748b;
+            --white: #ffffff;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --gradient: linear-gradient(135deg, #1a56db 0%, #0e3a8c 100%);
+            --gradient-light: linear-gradient(135deg, #2563eb 0%, #38bdf8 100%);
         }
 
         body {
             font-family: 'Poppins', sans-serif;
             background: var(--dark);
-            color: white;
+            color: var(--white);
             overflow-x: hidden;
         }
 
@@ -54,7 +63,7 @@
         .loader-circle {
             width: 80px;
             height: 80px;
-            border: 4px solid rgba(102, 126, 234, 0.2);
+            border: 4px solid rgba(26, 86, 219, 0.2);
             border-top-color: var(--primary);
             border-radius: 50%;
             animation: spin 1s linear infinite;
@@ -63,7 +72,7 @@
 
         .loader-text {
             font-size: 1.2rem;
-            color: var(--primary);
+            color: var(--accent);
             animation: pulse 1.5s ease-in-out infinite;
         }
 
@@ -101,7 +110,7 @@
         }
 
         nav.scrolled {
-            background: rgba(26, 26, 46, 0.95);
+            background: rgba(15, 23, 42, 0.95);
             backdrop-filter: blur(20px);
             padding: 1rem 5%;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
@@ -110,7 +119,7 @@
         .logo {
             font-size: 1.8rem;
             font-weight: 700;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            background: linear-gradient(135deg, var(--primary-light), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -123,10 +132,11 @@
             display: flex;
             gap: 2.5rem;
             list-style: none;
+            align-items: center;
         }
 
         .nav-links a {
-            color: white;
+            color: var(--white);
             text-decoration: none;
             font-weight: 500;
             position: relative;
@@ -140,6 +150,9 @@
         .nav-links li:nth-child(2) a { animation-delay: 0.7s; }
         .nav-links li:nth-child(3) a { animation-delay: 0.8s; }
         .nav-links li:nth-child(4) a { animation-delay: 0.9s; }
+        .nav-links li:nth-child(5) a { animation-delay: 1.0s; }
+        .nav-links li:nth-child(6) a { animation-delay: 1.1s; }
+        .nav-links li:nth-child(7) a { animation-delay: 1.2s; }
 
         .nav-links a::after {
             content: '';
@@ -148,12 +161,76 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
+            background: linear-gradient(90deg, var(--primary-light), var(--accent));
             transition: width 0.3s ease;
         }
 
         .nav-links a:hover::after {
             width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--gradient) !important;
+            padding: 0.6rem 1.5rem !important;
+            border-radius: 50px !important;
+            font-weight: 600 !important;
+            transition: transform 0.3s, box-shadow 0.3s !important;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 10px 30px rgba(26, 86, 219, 0.4) !important;
+        }
+
+        .nav-cta::after {
+            display: none !important;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--white);
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(15, 23, 42, 0.98);
+            z-index: 999;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .mobile-menu a:hover {
+            color: var(--accent);
         }
 
         /* Hero Section */
@@ -172,7 +249,7 @@
         .hero-badge {
             display: inline-block;
             padding: 0.5rem 1.5rem;
-            background: rgba(102, 126, 234, 0.2);
+            background: rgba(26, 86, 219, 0.2);
             border: 1px solid var(--primary);
             border-radius: 50px;
             font-size: 0.9rem;
@@ -191,7 +268,7 @@
         }
 
         .hero h1 .gradient-text {
-            background: linear-gradient(135deg, var(--primary), var(--accent), var(--secondary));
+            background: linear-gradient(135deg, var(--primary-light), var(--accent), var(--accent-light));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -206,7 +283,7 @@
 
         .hero p {
             font-size: 1.3rem;
-            max-width: 600px;
+            max-width: 650px;
             color: rgba(255, 255, 255, 0.8);
             margin-bottom: 3rem;
             opacity: 0;
@@ -222,16 +299,18 @@
 
         .btn-primary {
             padding: 1rem 2.5rem;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: var(--gradient);
             border: none;
             border-radius: 50px;
-            color: white;
+            color: var(--white);
             font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
             position: relative;
             overflow: hidden;
             transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            display: inline-block;
         }
 
         .btn-primary::before {
@@ -251,7 +330,7 @@
 
         .btn-primary:hover {
             transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 20px 40px rgba(26, 86, 219, 0.4);
         }
 
         .btn-secondary {
@@ -259,17 +338,62 @@
             background: transparent;
             border: 2px solid rgba(255, 255, 255, 0.3);
             border-radius: 50px;
-            color: white;
+            color: var(--white);
             font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
         }
 
         .btn-secondary:hover {
             background: rgba(255, 255, 255, 0.1);
-            border-color: var(--primary);
+            border-color: var(--accent);
             transform: translateY(-3px);
+        }
+
+        /* Countdown Section */
+        .countdown-wrapper {
+            margin-top: 3rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 1.8s;
+        }
+
+        .countdown-label {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1rem;
+        }
+
+        .countdown {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        .countdown-item {
+            text-align: center;
+        }
+
+        .countdown-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            background: rgba(26, 86, 219, 0.2);
+            border: 1px solid rgba(26, 86, 219, 0.4);
+            border-radius: 16px;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .countdown-text {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 0.5rem;
         }
 
         .scroll-indicator {
@@ -278,7 +402,7 @@
             left: 50%;
             transform: translateX(-50%);
             opacity: 0;
-            animation: fadeInUp 1s ease forwards 2s;
+            animation: fadeInUp 1s ease forwards 2.2s;
         }
 
         .scroll-indicator .mouse {
@@ -297,7 +421,7 @@
             transform: translateX(-50%);
             width: 6px;
             height: 10px;
-            background: var(--primary);
+            background: var(--accent);
             border-radius: 3px;
             animation: scrollDown 1.5s ease infinite;
         }
@@ -320,14 +444,14 @@
 
         .shape {
             position: absolute;
-            opacity: 0.1;
+            opacity: 0.08;
             animation: float 20s ease-in-out infinite;
         }
 
         .shape-1 {
             width: 300px;
             height: 300px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
             top: 10%;
             left: -5%;
@@ -347,7 +471,7 @@
         .shape-3 {
             width: 150px;
             height: 150px;
-            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            background: linear-gradient(135deg, var(--primary-light), var(--accent));
             border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
             bottom: 20%;
             left: 10%;
@@ -361,13 +485,7 @@
             75% { transform: translate(20px, 10px) rotate(3deg); }
         }
 
-        /* Features Section */
-        .features {
-            padding: 8rem 5%;
-            position: relative;
-            z-index: 1;
-        }
-
+        /* Section Common */
         .section-header {
             text-align: center;
             margin-bottom: 5rem;
@@ -376,10 +494,10 @@
         .section-header .subtitle {
             display: inline-block;
             padding: 0.4rem 1rem;
-            background: rgba(102, 126, 234, 0.2);
+            background: rgba(26, 86, 219, 0.2);
             border-radius: 20px;
             font-size: 0.9rem;
-            color: var(--primary);
+            color: var(--accent);
             margin-bottom: 1rem;
         }
 
@@ -388,9 +506,23 @@
             font-weight: 700;
         }
 
+        .section-header p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 1rem auto 0;
+            font-size: 1.1rem;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 8rem 5%;
+            position: relative;
+            z-index: 1;
+        }
+
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             max-width: 1400px;
             margin: 0 auto;
@@ -398,7 +530,7 @@
 
         .feature-card {
             background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 24px;
             padding: 2.5rem;
             position: relative;
@@ -421,7 +553,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            background: linear-gradient(135deg, rgba(26, 86, 219, 0.1), rgba(56, 189, 248, 0.05));
             opacity: 0;
             transition: opacity 0.3s;
         }
@@ -433,13 +565,13 @@
         .feature-card:hover {
             transform: translateY(-10px) scale(1.02);
             border-color: var(--primary);
-            box-shadow: 0 30px 60px rgba(102, 126, 234, 0.2);
+            box-shadow: 0 30px 60px rgba(26, 86, 219, 0.2);
         }
 
         .feature-icon {
             width: 80px;
             height: 80px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: var(--gradient);
             border-radius: 20px;
             display: flex;
             align-items: center;
@@ -451,24 +583,37 @@
 
         .feature-card:hover .feature-icon {
             transform: rotateY(180deg);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 10px 30px rgba(26, 86, 219, 0.4);
         }
 
         .feature-card h3 {
             font-size: 1.4rem;
             margin-bottom: 0.8rem;
-            color: white;
+            color: var(--white);
         }
 
         .feature-card p {
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255, 255, 255, 0.6);
             line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        .feature-badge {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            padding: 0.3rem 0.8rem;
+            background: var(--success);
+            color: var(--white);
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-radius: 20px;
         }
 
         /* Stats Section */
         .stats {
             padding: 5rem 5%;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: var(--gradient);
             position: relative;
             z-index: 1;
         }
@@ -510,6 +655,146 @@
             }
         }
 
+        /* Schedule Section */
+        .schedule {
+            padding: 8rem 5%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .schedule-table-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+            overflow-x: auto;
+        }
+
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .schedule-table th {
+            background: rgba(26, 86, 219, 0.3);
+            padding: 1.2rem 1.5rem;
+            text-align: left;
+            font-weight: 600;
+            color: var(--accent);
+            font-size: 0.95rem;
+        }
+
+        .schedule-table td {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+        }
+
+        .schedule-table tr:hover td {
+            background: rgba(26, 86, 219, 0.1);
+        }
+
+        .schedule-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .schedule-badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--success);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 8rem 5%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.5s ease;
+        }
+
+        .gallery-item.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem 1.5rem 1.5rem;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-overlay h4 {
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .gallery-overlay p {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .gallery-placeholder {
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .gallery-placeholder span {
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
         /* Testimonials */
         .testimonials {
             padding: 8rem 5%;
@@ -527,7 +812,7 @@
 
         .testimonial-card {
             background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 24px;
             padding: 2.5rem;
             position: relative;
@@ -555,7 +840,7 @@
         }
 
         .testimonial-card::before {
-            content: '"';
+            content: '\201C';
             position: absolute;
             top: 1.5rem;
             right: 2rem;
@@ -565,10 +850,16 @@
             font-family: Georgia, serif;
         }
 
+        .testimonial-stars {
+            color: var(--warning);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
         .testimonial-text {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             line-height: 1.8;
-            color: rgba(255, 255, 255, 0.9);
+            color: rgba(255, 255, 255, 0.85);
             margin-bottom: 1.5rem;
             font-style: italic;
         }
@@ -583,7 +874,7 @@
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            background: var(--gradient-light);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -598,7 +889,266 @@
 
         .author-info p {
             font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 8rem 5%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .faq-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: border-color 0.3s;
+        }
+
+        .faq-item.active {
+            border-color: var(--primary);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: background 0.3s;
+        }
+
+        .faq-question:hover {
+            background: rgba(26, 86, 219, 0.1);
+        }
+
+        .faq-icon {
+            font-size: 1.5rem;
+            color: var(--accent);
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+        }
+
+        .faq-answer p {
+            padding: 0 1.5rem 1.5rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+        }
+
+        /* Registration Form */
+        .registration {
+            padding: 8rem 5%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .form-wrapper {
+            max-width: 700px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 30px;
+            padding: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .form-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(26, 86, 219, 0.08) 0%, transparent 70%);
+            animation: rotateGlow 15s linear infinite;
+        }
+
+        @keyframes rotateGlow {
+            to { transform: rotate(360deg); }
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 0.9rem 1.2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: var(--white);
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.2);
+        }
+
+        .form-group select option {
+            background: var(--dark);
+            color: var(--white);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-submit {
+            grid-column: 1 / -1;
+            text-align: center;
+            margin-top: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .form-submit .btn-primary {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .form-note {
+            font-size: 0.8rem;
+            color: var(--gray);
+            margin-top: 1rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Location Section */
+        .location {
+            padding: 8rem 5%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .location-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .map-container {
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            aspect-ratio: 4/3;
+            background: var(--dark-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .map-placeholder {
+            font-size: 4rem;
+            color: var(--accent);
+        }
+
+        .map-placeholder-text {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .location-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .location-info h3 {
+            font-size: 1.8rem;
+            color: var(--white);
+        }
+
+        .location-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .location-icon {
+            width: 50px;
+            height: 50px;
+            min-width: 50px;
+            background: rgba(26, 86, 219, 0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .location-detail h4 {
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+            color: var(--white);
+        }
+
+        .location-detail p {
+            font-size: 0.9rem;
+            color: var(--gray);
+            line-height: 1.5;
         }
 
         /* CTA Section */
@@ -610,7 +1160,7 @@
         }
 
         .cta-box {
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+            background: linear-gradient(135deg, rgba(26, 86, 219, 0.2), rgba(14, 58, 140, 0.2));
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 30px;
             padding: 5rem 3rem;
@@ -627,12 +1177,8 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(26, 86, 219, 0.1) 0%, transparent 70%);
             animation: rotateGlow 10s linear infinite;
-        }
-
-        @keyframes rotateGlow {
-            to { transform: rotate(360deg); }
         }
 
         .cta-box h2 {
@@ -654,6 +1200,22 @@
             padding: 1.2rem 3rem;
         }
 
+        .cta-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            color: var(--success);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .cta-whatsapp:hover {
+            color: #059669;
+        }
+
         /* Footer */
         footer {
             padding: 4rem 5% 2rem;
@@ -664,36 +1226,118 @@
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 3rem;
             max-width: 1200px;
             margin: 0 auto 3rem;
         }
 
         .footer-section h3 {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             margin-bottom: 1.5rem;
-            color: var(--primary);
+            color: var(--accent);
         }
 
         .footer-section p,
         .footer-section a {
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255, 255, 255, 0.6);
             text-decoration: none;
             line-height: 2;
             display: block;
             transition: color 0.3s;
+            font-size: 0.9rem;
         }
 
         .footer-section a:hover {
-            color: var(--primary);
+            color: var(--accent);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .footer-social a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
         }
 
         .footer-bottom {
             text-align: center;
             padding-top: 2rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.85rem;
+        }
+
+        /* Custom Cursor */
+        .cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--accent);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            transition: transform 0.1s ease, background 0.3s;
+            mix-blend-mode: difference;
+        }
+
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+        }
+
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border: none;
+            border-radius: 14px;
+            color: var(--white);
+            font-size: 1.3rem;
+            cursor: pointer;
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(26, 86, 219, 0.4);
         }
 
         /* Animations */
@@ -741,33 +1385,20 @@
             }
         }
 
-        /* Custom Cursor */
-        .cursor {
-            width: 20px;
-            height: 20px;
-            border: 2px solid var(--primary);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9998;
-            transition: transform 0.1s ease, background 0.3s;
-            mix-blend-mode: difference;
-        }
-
-        .cursor-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--accent);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9998;
-        }
-
         /* Responsive */
+        @media (max-width: 1024px) {
+            .location-wrapper {
+                grid-template-columns: 1fr;
+            }
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
+            }
+
+            .hamburger {
+                display: flex;
             }
 
             .hero h1 {
@@ -787,7 +1418,8 @@
             }
 
             .features-grid,
-            .testimonials-grid {
+            .testimonials-grid,
+            .gallery-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -799,8 +1431,51 @@
                 font-size: 1.8rem;
             }
 
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-wrapper {
+                padding: 2rem 1.5rem;
+            }
+
+            .countdown {
+                gap: 0.8rem;
+            }
+
+            .countdown-number {
+                width: 65px;
+                height: 65px;
+                font-size: 1.6rem;
+            }
+
+            .schedule-table {
+                font-size: 0.85rem;
+            }
+
+            .schedule-table th,
+            .schedule-table td {
+                padding: 0.8rem;
+            }
+
             .cursor, .cursor-dot {
                 display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .countdown-number {
+                width: 55px;
+                height: 55px;
+                font-size: 1.3rem;
+            }
+
+            .countdown {
+                gap: 0.5rem;
             }
         }
     </style>
@@ -821,15 +1496,34 @@
     <!-- Particles -->
     <canvas id="particles"></canvas>
 
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#beranda" onclick="closeMobileMenu()">Beranda</a>
+        <a href="#program" onclick="closeMobileMenu()">Program</a>
+        <a href="#jadwal" onclick="closeMobileMenu()">Jadwal</a>
+        <a href="#galeri" onclick="closeMobileMenu()">Galeri</a>
+        <a href="#testimoni" onclick="closeMobileMenu()">Testimoni</a>
+        <a href="#faq" onclick="closeMobileMenu()">FAQ</a>
+        <a href="#daftar" onclick="closeMobileMenu()">Daftar</a>
+    </div>
+
     <!-- Navigation -->
     <nav id="navbar">
         <div class="logo">DS Bunda Mulia</div>
         <ul class="nav-links">
             <li><a href="#beranda">Beranda</a></li>
             <li><a href="#program">Program</a></li>
+            <li><a href="#jadwal">Jadwal</a></li>
+            <li><a href="#galeri">Galeri</a></li>
             <li><a href="#testimoni">Testimoni</a></li>
-            <li><a href="#kontak">Kontak</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#daftar" class="nav-cta">Daftar</a></li>
         </ul>
+        <div class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </nav>
 
     <!-- Hero Section -->
@@ -849,8 +1543,30 @@
         <p>Bergabung bersama Bunda Mulia untuk mengembangkan kemampuan digital Anda secara profesional dan terstruktur.</p>
         
         <div class="hero-buttons">
-            <button class="btn-primary">Daftar Sekarang</button>
-            <button class="btn-secondary">Pelajari Lebih Lanjut</button>
+            <a href="#daftar" class="btn-primary">Daftar Sekarang</a>
+            <a href="#program" class="btn-secondary">Pelajari Lebih Lanjut</a>
+        </div>
+
+        <div class="countdown-wrapper">
+            <p class="countdown-label">Pendaftaran Gelombang Berikutnya Tutup Dalam:</p>
+            <div class="countdown" id="countdown">
+                <div class="countdown-item">
+                    <div class="countdown-number" id="days">00</div>
+                    <div class="countdown-text">Hari</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="hours">00</div>
+                    <div class="countdown-text">Jam</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="minutes">00</div>
+                    <div class="countdown-text">Menit</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="seconds">00</div>
+                    <div class="countdown-text">Detik</div>
+                </div>
+            </div>
         </div>
 
         <div class="scroll-indicator">
@@ -863,6 +1579,7 @@
         <div class="section-header">
             <span class="subtitle">Program Kami</span>
             <h2>Layanan Unggulan</h2>
+            <p>Pilihan program pelatihan digital terlengkap untuk semua kalangan</p>
         </div>
 
         <div class="features-grid">
@@ -896,6 +1613,18 @@
                 <h3>Sertifikasi</h3>
                 <p>Persiapan ujian sertifikasi internasional yang diakui dunia kerja global.</p>
             </div>
+            <div class="feature-card" data-delay="600">
+                <div class="feature-badge">Baru</div>
+                <div class="feature-icon">&#127890;</div>
+                <h3>Kelas Anak / School</h3>
+                <p>Program pelatihan digital khusus anak-anak dan pelajar dengan metode belajar yang menyenangkan.</p>
+            </div>
+            <div class="feature-card" data-delay="700">
+                <div class="feature-badge">Baru</div>
+                <div class="feature-icon">&#127970;</div>
+                <h3>Pelatihan Corporate</h3>
+                <p>Program pelatihan karyawan perusahaan yang dapat disesuaikan dengan kebutuhan bisnis.</p>
+            </div>
         </div>
     </section>
 
@@ -921,41 +1650,356 @@
         </div>
     </section>
 
+    <!-- Schedule Section -->
+    <section class="schedule" id="jadwal">
+        <div class="section-header">
+            <span class="subtitle">Jadwal Kelas</span>
+            <h2>Jadwal Pelatihan</h2>
+            <p>Pilih jadwal yang sesuai dengan waktu luang Anda</p>
+        </div>
+
+        <div class="schedule-table-wrapper">
+            <table class="schedule-table">
+                <thead>
+                    <tr>
+                        <th>Program</th>
+                        <th>Hari</th>
+                        <th>Jam</th>
+                        <th>Durasi</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Microsoft Office</td>
+                        <td>Senin - Rabu</td>
+                        <td>09:00 - 11:00</td>
+                        <td>4 Minggu</td>
+                        <td><span class="schedule-badge">Tersedia</span></td>
+                    </tr>
+                    <tr>
+                        <td>Data Analysis</td>
+                        <td>Selasa - Kamis</td>
+                        <td>13:00 - 15:00</td>
+                        <td>6 Minggu</td>
+                        <td><span class="schedule-badge">Tersedia</span></td>
+                    </tr>
+                    <tr>
+                        <td>Digital Marketing</td>
+                        <td>Rabu - Jumat</td>
+                        <td>19:00 - 21:00</td>
+                        <td>8 Minggu</td>
+                        <td><span class="schedule-badge">Tersedia</span></td>
+                    </tr>
+                    <tr>
+                        <td>Web Development</td>
+                        <td>Sabtu - Minggu</td>
+                        <td>10:00 - 12:00</td>
+                        <td>10 Minggu</td>
+                        <td><span class="schedule-badge">Tersedia</span></td>
+                    </tr>
+                    <tr>
+                        <td>Design Graphics</td>
+                        <td>Senin - Rabu</td>
+                        <td>19:00 - 21:00</td>
+                        <td>6 Minggu</td>
+                        <td><span class="schedule-badge">Tersedia</span></td>
+                    </tr>
+                    <tr>
+                        <td>Sertifikasi</td>
+                        <td>Sabtu</td>
+                        <td>09:00 - 12:00</td>
+                        <td>3 Minggu</td>
+                        <td><span class="schedule-badge">Tersedia</span></td>
+                    </tr>
+                    <tr>
+                        <td>Kelas Anak / School</td>
+                        <td>Sabtu - Minggu</td>
+                        <td>08:00 - 10:00</td>
+                        <td>8 Minggu</td>
+                        <td><span class="schedule-badge">Tersedia</span></td>
+                    </tr>
+                    <tr>
+                        <td>Pelatihan Corporate</td>
+                        <td>Sesuai Perjanjian</td>
+                        <td>Fleksibel</td>
+                        <td>Menyesuaikan</td>
+                        <td><span class="schedule-badge">By Request</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="galeri">
+        <div class="section-header">
+            <span class="subtitle">Galeri</span>
+            <h2>Kegiatan Kami</h2>
+            <p>Lihat momen-momen terbaik dari kelas dan kegiatan Bunda Mulia</p>
+        </div>
+
+        <div class="gallery-grid">
+            <div class="gallery-item" data-delay="0">
+                <div class="gallery-placeholder">&#128218;<span>Kelas Microsoft Office</span></div>
+                <div class="gallery-overlay">
+                    <h4>Kelas Microsoft Office</h4>
+                    <p>Suasana belajar Excel tingkat lanjut</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-delay="100">
+                <div class="gallery-placeholder">&#128187;<span>Workshop Digital Marketing</span></div>
+                <div class="gallery-overlay">
+                    <h4>Workshop Digital Marketing</h4>
+                    <p>Pelatihan SEO & Social Media</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-delay="200">
+                <div class="gallery-placeholder">&#127942;<span>Seremoni Sertifikasi</span></div>
+                <div class="gallery-overlay">
+                    <h4>Seremoni Sertifikasi</h4>
+                    <p>Penyerahan sertifikat kepada lulusan</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-delay="300">
+                <div class="gallery-placeholder">&#128104;&#8205;&#127891;<span>Kelas Anak</span></div>
+                <div class="gallery-overlay">
+                    <h4>Kelas Anak</h4>
+                    <p>Belajar coding dengan metode menyenangkan</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-delay="400">
+                <div class="gallery-placeholder">&#127970;<span>Pelatihan Corporate</span></div>
+                <div class="gallery-overlay">
+                    <h4>Pelatihan Corporate</h4>
+                    <p>Training karyawan perusahaan mitra</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-delay="500">
+                <div class="gallery-placeholder">&#128105;&#8205;&#128187;<span>Lab Komputer</span></div>
+                <div class="gallery-overlay">
+                    <h4>Lab Komputer</h4>
+                    <p>Fasilitas modern untuk praktik langsung</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Testimonials Section -->
     <section class="testimonials" id="testimoni">
         <div class="section-header">
             <span class="subtitle">Testimoni</span>
             <h2>Apa Kata Mereka?</h2>
+            <p>Cerita nyata dari para lulusan kami yang telah sukses</p>
         </div>
 
         <div class="testimonials-grid">
             <div class="testimonial-card">
-                <p class="testimonial-text">"Setelah mengikuti kelas Excel di Bunda Mulia, saya jadi lebih percaya diri untuk bekerja di bidang akuntansi. Terima kasih Bunda Mulia!"</p>
+                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p class="testimonial-text">"Setelah mengikuti kelas Excel di Bunda Mulia, saya jadi lebih percaya diri untuk bekerja di bidang akuntansi. Materinya sangat praktis dan langsung bisa diterapkan di kerja."</p>
                 <div class="testimonial-author">
                     <div class="author-avatar">SA</div>
                     <div class="author-info">
                         <h4>Siti Aminah</h4>
-                        <p>Karyawan Finance</p>
+                        <p>Karyawan Finance - PT Maju Jaya</p>
                     </div>
                 </div>
             </div>
             <div class="testimonial-card">
-                <p class="testimonial-text">"Kelas Digital Marketing-nya luar biasa! Strategi yang diajarkan langsung bisa saya praktekkan dan omzet bisnis saya naik 200%."</p>
+                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p class="testimonial-text">"Kelas Digital Marketing-nya luar biasa! Strategi yang diajarkan langsung bisa saya praktekkan dan omzet bisnis saya naik 200% dalam 3 bulan."</p>
                 <div class="testimonial-author">
                     <div class="author-avatar">BP</div>
                     <div class="author-info">
                         <h4>Budi Prasetyo</h4>
-                        <p>Entrepreneur</p>
+                        <p>Entrepreneur - Toko Online Fashion</p>
                     </div>
                 </div>
             </div>
             <div class="testimonial-card">
-                <p class="testimonial-text">"Gurunya ramah dan sabar. Materi yang diajarkan sangat relevan dengan kebutuhan dunia kerja saat ini. Highly recommended!"</p>
+                <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p class="testimonial-text">"Gurunya ramah dan sabar. Materi yang diajarkan sangat relevan dengan kebutuhan dunia kerja saat ini. Anak saya juga senang belajar di kelas anak Bunda Mulia."</p>
                 <div class="testimonial-author">
                     <div class="author-avatar">DW</div>
                     <div class="author-info">
                         <h4>Dewi Wulandari</h4>
-                        <p>Mahasiswa</p>
+                        <p>Ibu Rumah Tangga & Mahasiswa</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="section-header">
+            <span class="subtitle">FAQ</span>
+            <h2>Pertanyaan Umum</h2>
+            <p>Temukan jawaban atas pertanyaan yang sering diajukan</p>
+        </div>
+
+        <div class="faq-list">
+            <div class="faq-item active">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Bagaimana cara mendaftar kelas di Bunda Mulia?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Anda bisa mendaftar melalui form online di website kami, menghubungi WhatsApp kami, atau datang langsung ke kantor. Setelah mengisi form, tim kami akan menghubungi Anda untuk konfirmasi dan pembayaran.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Apakah ada diskon untuk pendaftaran?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Ya, kami menyediakan diskon khusus untuk pendaftaran early bird, mahasiswa, dan pendaftaran kelompok (minimal 3 orang). Hubungi kami untuk info lengkap promo terkini.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Berapa lama waktu belajar untuk setiap program?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Durasi bervariasi tergantung program, mulai dari 3 minggu hingga 10 minggu. Setiap sesi berlangsung 2 jam. Detail jadwal lengkap bisa dilihat di bagian Jadwal Kelas.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Apakah sertifikat yang dikeluarkan diakui?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Ya, sertifikat kami diakui oleh berbagai perusahaan dan institusi. Untuk program sertifikasi internasional, kami bekerja sama dengan lembaga sertifikasi terkemuka.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Apakah bisa bayar cicilan?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Bisa! Kami menyediakan opsi cicilan 2x tanpa bunga untuk semua program. Untuk pelatihan corporate, kami juga menawarkan sistem pembayaran yang fleksibel.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Apakah tersedia kelas online?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Ya, sebagian program kami tersedia dalam format online via Zoom. Materi dan praktik tetap sama dengan kelas offline. Namun, kelas offline tetap direkomendasikan untuk pengalaman belajar maksimal.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Form -->
+    <section class="registration" id="daftar">
+        <div class="section-header">
+            <span class="subtitle">Pendaftaran</span>
+            <h2>Daftar Sekarang</h2>
+            <p>Isi form berikut untuk mendaftar atau bertanya lebih lanjut</p>
+        </div>
+
+        <div class="form-wrapper">
+            <form class="form-grid" id="registrationForm" onsubmit="handleFormSubmit(event)">
+                <div class="form-group">
+                    <label for="nama">Nama Lengkap *</label>
+                    <input type="text" id="nama" name="nama" placeholder="Masukkan nama lengkap" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" placeholder="Masukkan email" required>
+                </div>
+                <div class="form-group">
+                    <label for="telepon">Nomor Telepon *</label>
+                    <input type="tel" id="telepon" name="telepon" placeholder="Contoh: 0812-xxxx-xxxx" required>
+                </div>
+                <div class="form-group">
+                    <label for="program">Program Pilihan *</label>
+                    <select id="program" name="program" required>
+                        <option value="">-- Pilih Program --</option>
+                        <option value="microsoft-office">Microsoft Office</option>
+                        <option value="data-analysis">Data Analysis</option>
+                        <option value="digital-marketing">Digital Marketing</option>
+                        <option value="web-development">Web Development</option>
+                        <option value="design-graphics">Design Graphics</option>
+                        <option value="sertifikasi">Sertifikasi</option>
+                        <option value="kelas-anak">Kelas Anak / School</option>
+                        <option value="pelatihan-corporate">Pelatihan Corporate</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="jadwal">Jadwal Preferensi</label>
+                    <select id="jadwal" name="jadwal">
+                        <option value="">-- Pilih Jadwal --</option>
+                        <option value="pagi">Pagi (08:00 - 12:00)</option>
+                        <option value="siang">Siang (13:00 - 17:00)</option>
+                        <option value="sore">Sore (17:00 - 21:00)</option>
+                        <option value="weekend">Weekend (Sabtu/Minggu)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="asal">Asal / Institusi</label>
+                    <input type="text" id="asal" name="asal" placeholder="Nama kampus/perusahaan (opsional)">
+                </div>
+                <div class="form-group full-width">
+                    <label for="pesan">Pesan Tambahan</label>
+                    <textarea id="pesan" name="pesan" placeholder="Ceritakan kebutuhan atau pertanyaan Anda..."></textarea>
+                </div>
+                <div class="form-submit">
+                    <button type="submit" class="btn-primary">Kirim Pendaftaran</button>
+                </div>
+            </form>
+            <p class="form-note">Tim kami akan menghubungi Anda dalam 1x24 jam setelah pendaftaran.</p>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="location" id="lokasi">
+        <div class="section-header">
+            <span class="subtitle">Lokasi</span>
+            <h2>Temui Kami</h2>
+            <p>Kunjungi kantor dan fasilitas kami langsung</p>
+        </div>
+
+        <div class="location-wrapper">
+            <div class="map-container">
+                <div class="map-placeholder">&#128205;</div>
+                <p class="map-placeholder-text">Google Maps akan ditampilkan di sini</p>
+                <a href="https://maps.google.com" target="_blank" class="btn-secondary" style="font-size: 0.9rem; padding: 0.6rem 1.5rem;">Buka di Google Maps</a>
+            </div>
+            <div class="location-info">
+                <h3>Kelas DS Bunda Mulia</h3>
+                <div class="location-item">
+                    <div class="location-icon">&#128205;</div>
+                    <div class="location-detail">
+                        <h4>Alamat</h4>
+                        <p>Jl. Contoh No. 123, Kecamatan Setiabudi, Jakarta Selatan, DKI Jakarta 12345</p>
+                    </div>
+                </div>
+                <div class="location-item">
+                    <div class="location-icon">&#128222;</div>
+                    <div class="location-detail">
+                        <h4>Telepon / WhatsApp</h4>
+                        <p>+62 812-3456-7890</p>
+                    </div>
+                </div>
+                <div class="location-item">
+                    <div class="location-icon">&#128231;</div>
+                    <div class="location-detail">
+                        <h4>Email</h4>
+                        <p>info@bundamulia.ac.id</p>
+                    </div>
+                </div>
+                <div class="location-item">
+                    <div class="location-icon">&#128336;</div>
+                    <div class="location-detail">
+                        <h4>Jam Operasional</h4>
+                        <p>Senin - Sabtu: 08:00 - 21:00 WIB</p>
                     </div>
                 </div>
             </div>
@@ -966,8 +2010,10 @@
     <section class="cta" id="kontak">
         <div class="cta-box">
             <h2>Siap Memulai Perjalanan Digital Anda?</h2>
-            <p>Jangan lewatkan kesempatan untuk meningkatkan skill digital Anda. Daftar sekarang dan dapatkan diskon khusus!</p>
-            <button class="btn-primary">Hubungi Kami Sekarang</button>
+            <p>Jangan lewatkan kesempatan untuk meningkatkan skill digital Anda. Daftar sekarang dan dapatkan diskon khusus pendaftaran awal!</p>
+            <a href="#daftar" class="btn-primary">Hubungi Kami Sekarang</a>
+            <br>
+            <a href="https://wa.me/6281234567890" target="_blank" class="cta-whatsapp">&#128172; Chat via WhatsApp</a>
         </div>
     </section>
 
@@ -977,25 +2023,48 @@
             <div class="footer-section">
                 <h3>Tentang Kami</h3>
                 <p>Kelas Digital Skill Bunda Mulia hadir untuk memberikan pelatihan komputer dan digital yang berkualitas bagi seluruh kalangan.</p>
+                <div class="footer-social">
+                    <a href="#" title="Instagram">&#128247;</a>
+                    <a href="#" title="Facebook">&#128101;</a>
+                    <a href="#" title="YouTube">&#127909;</a>
+                    <a href="#" title="TikTok">&#127916;</a>
+                </div>
             </div>
             <div class="footer-section">
                 <h3>Program</h3>
-                <a href="#">Microsoft Office</a>
-                <a href="#">Data Analysis</a>
-                <a href="#">Digital Marketing</a>
-                <a href="#">Web Development</a>
+                <a href="#program">Microsoft Office</a>
+                <a href="#program">Data Analysis</a>
+                <a href="#program">Digital Marketing</a>
+                <a href="#program">Web Development</a>
+                <a href="#program">Design Graphics</a>
+                <a href="#program">Sertifikasi</a>
+                <a href="#program">Kelas Anak / School</a>
+                <a href="#program">Pelatihan Corporate</a>
+            </div>
+            <div class="footer-section">
+                <h3>Menu</h3>
+                <a href="#beranda">Beranda</a>
+                <a href="#jadwal">Jadwal Kelas</a>
+                <a href="#galeri">Galeri</a>
+                <a href="#testimoni">Testimoni</a>
+                <a href="#faq">FAQ</a>
+                <a href="#daftar">Daftar</a>
             </div>
             <div class="footer-section">
                 <h3>Kontak</h3>
-                <p>Jl. Contoh No. 123, Jakarta</p>
+                <p>Jl. Contoh No. 123, Jakarta Selatan</p>
                 <p>info@bundamulia.ac.id</p>
                 <p>+62 812-3456-7890</p>
+                <p>Senin - Sabtu: 08:00 - 21:00</p>
             </div>
         </div>
         <div class="footer-bottom">
             <p>&copy; 2026 Kelas DS Bunda Mulia. Hak Cipta Dilindungi.</p>
         </div>
     </footer>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">&#9650;</button>
 
     <script>
         // Loading Screen
@@ -1004,6 +2073,15 @@
                 document.getElementById('loader').classList.add('hidden');
             }, 1500);
         });
+
+        // Mobile Menu
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('active');
+        }
+
+        function closeMobileMenu() {
+            document.getElementById('mobileMenu').classList.remove('active');
+        }
 
         // Custom Cursor
         const cursor = document.getElementById('cursor');
@@ -1016,7 +2094,7 @@
             cursorDot.style.top = e.clientY - 4 + 'px';
         });
 
-        document.querySelectorAll('a, button, .feature-card').forEach(el => {
+        document.querySelectorAll('a, button, .feature-card, .gallery-item, .faq-question').forEach(el => {
             el.addEventListener('mouseenter', () => cursor.style.transform = 'scale(1.5)');
             el.addEventListener('mouseleave', () => cursor.style.transform = 'scale(1)');
         });
@@ -1031,14 +2109,14 @@
             canvas.height = window.innerHeight;
             particlesArray = [];
             
-            for (let i = 0; i < 80; i++) {
+            for (let i = 0; i < 60; i++) {
                 particlesArray.push({
                     x: Math.random() * canvas.width,
                     y: Math.random() * canvas.height,
                     size: Math.random() * 3 + 1,
                     speedX: (Math.random() - 0.5) * 0.5,
                     speedY: (Math.random() - 0.5) * 0.5,
-                    opacity: Math.random() * 0.5 + 0.1
+                    opacity: Math.random() * 0.4 + 0.1
                 });
             }
         }
@@ -1055,7 +2133,7 @@
                 
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(102, 126, 234, ${p.opacity})`;
+                ctx.fillStyle = `rgba(26, 86, 219, ${p.opacity})`;
                 ctx.fill();
                 
                 particlesArray.forEach((p2, j) => {
@@ -1068,7 +2146,7 @@
                             ctx.beginPath();
                             ctx.moveTo(p.x, p.y);
                             ctx.lineTo(p2.x, p2.y);
-                            ctx.strokeStyle = `rgba(102, 126, 234, ${0.1 * (1 - dist / 120)})`;
+                            ctx.strokeStyle = `rgba(26, 86, 219, ${0.08 * (1 - dist / 120)})`;
                             ctx.stroke();
                         }
                     }
@@ -1085,10 +2163,14 @@
         // Navbar Scroll Effect
         window.addEventListener('scroll', () => {
             const nav = document.getElementById('navbar');
+            const backToTop = document.getElementById('backToTop');
+            
             if (window.scrollY > 100) {
                 nav.classList.add('scrolled');
+                backToTop.classList.add('visible');
             } else {
                 nav.classList.remove('scrolled');
+                backToTop.classList.remove('visible');
             }
         });
 
@@ -1109,7 +2191,7 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.feature-card, .stat-item, .testimonial-card').forEach(el => {
+        document.querySelectorAll('.feature-card, .stat-item, .testimonial-card, .gallery-item').forEach(el => {
             observer.observe(el);
         });
 
@@ -1147,6 +2229,65 @@
         document.querySelectorAll('.stats').forEach(el => {
             statsObserver.observe(el);
         });
+
+        // Countdown Timer
+        function updateCountdown() {
+            const now = new Date();
+            const nextMonth = new Date(now.getFullYear(), now.getMonth() + 1, 1);
+            const diff = nextMonth - now;
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // FAQ Toggle
+        function toggleFaq(element) {
+            const faqItem = element.parentElement;
+            const isActive = faqItem.classList.contains('active');
+            
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            if (!isActive) {
+                faqItem.classList.add('active');
+            }
+        }
+
+        // Form Submission
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData);
+            
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.textContent;
+            btn.textContent = 'Mengirim...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                btn.textContent = 'Terkirim!';
+                btn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+                
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                    btn.style.background = '';
+                    btn.disabled = false;
+                    e.target.reset();
+                }, 2000);
+            }, 1500);
+        }
 
         // Smooth Scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
